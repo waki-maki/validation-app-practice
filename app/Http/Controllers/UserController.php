@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Http\Requests\StoreUserRequest;
+use App\Models\User;
+use function PHPUnit\Framework\returnArgument;
+
+class UserController extends Controller
+{
+    //
+    public function create()
+    {
+        return view('register');
+    }
+
+    public function store(StoreUserRequest $request)
+    {
+        User::create($request->validated());
+
+        return view('register_success');
+    }
+}
